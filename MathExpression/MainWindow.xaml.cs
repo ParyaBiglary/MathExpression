@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using org.mariuszgromada.math.mxparser;
 
 namespace MathExpression
 {
@@ -22,7 +23,16 @@ namespace MathExpression
     {
         public MainWindow()
         {
+            
             InitializeComponent();
         }
+
+        private void Calculate_Button(object sender, RoutedEventArgs e)
+        {
+            var expression = ExpressionTextBox.Text;
+            var ex = new org.mariuszgromada.math.mxparser.Expression(expression);
+            AnswerTextBlock.Text = ex.calculate().ToString();
+        }
+
     }
 }
